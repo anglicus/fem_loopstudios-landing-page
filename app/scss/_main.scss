@@ -1,0 +1,267 @@
+@use "breakpoints" as bp;
+@use "functions" as *;
+
+.section {
+    // GLOBAL SECTION PROPERTIES
+    margin: 96px 24px 0;
+    
+    &:last-child {
+        margin-bottom: 96px;
+    }
+
+    @include bp.up(large) {
+        margin: 0 toRem(165) toRem(184) toRem(164);
+
+        &:first-child {
+            margin-top: toRem(160);
+        }
+
+        &:last-child {
+            margin-bottom: toRem(184);
+        }
+    }
+
+    // SUMMARY
+    &__summary {
+        position: relative;
+        text-align: center;
+        
+        &__img {
+            width: 100%;
+        }
+
+        &__info {
+            margin-top: toRem(48);
+            padding: 0 toRem(24);
+
+            h2 {
+                margin: 0 0 toRem(16);
+            }
+
+            p {
+                margin: 0;
+                opacity: 50%;
+            }
+        }
+
+        @include bp.up(large) {
+            text-align: left;
+
+            &__img-div {
+                width: 731 / 1111 * 100%;
+            }
+
+            &__info {
+                position: absolute;
+                width: 541 / 1111 * 100%;
+                bottom: 0;
+                right: 0;
+                margin: 0;
+                padding: toRem(96) 0 0 toRem(96);
+                background-color: white;
+                h2 {
+                    margin: 0 0 toRem(25);
+                }
+            }
+        }
+
+    }
+
+    // CREATIONS
+    &__creations {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        
+
+        h2 {
+            margin: 0 0 toRem(48);
+        }
+
+        @include bp.up(large) {
+            display: grid;
+            grid-template-rows: (98 / 998) * 1fr (450 / 998) * 1fr (450 / 998) * 1fr;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 30px;
+            row-gap: 30px;
+
+            margin-right: toRem(162);
+
+            h2 {
+                grid-area: 1 / 1 / 2 / 4;
+            }
+
+            .cta-seeall {
+                grid-area: 1 / 4 / 2 / 5;
+                justify-self: end;
+                align-self: start;
+                margin-top: toRem(3);
+            }
+
+        }
+
+
+        .cta-seeall {
+            order: 10;
+
+            width: toRem(157);
+            height: toRem(40);
+            
+            border: 1px solid black;
+            background-color: white;
+            text-transform: uppercase;
+
+            cursor: pointer;
+
+            &:hover {
+                background-color: black;
+                color: white;
+            }
+
+            &:active {
+                transform: scale(99%, 99%);
+            }
+        }
+    }
+
+    &__creation {
+        position: relative;
+        z-index: 1;
+        // height: toRem(120);
+        width: 100%;
+        color: white;
+
+        height: toRem(120);
+        //padding: toRem(52) toRem(180) toRem(20) toRem(20);
+        margin: 0 0 toRem(24);
+
+        cursor: pointer;
+
+        &:last-child {
+            margin-bottom: toRem(34);
+        }
+
+        h3 {
+            width: 50%;
+            position: absolute;
+            bottom: toRem(20);
+            left: toRem(20);
+            margin: 0;
+        }
+
+        @include bp.up(large) {
+            height: toRem(450);
+            margin: 0;
+
+            &:last-child {
+                margin-bottom: 0
+            }
+
+            h3 {
+                bottom: toRem(32);
+                left: toRem(40);
+                width: 70%;
+                word-wrap: break-word;
+            }
+        }
+
+        &:hover {
+            color: black;
+            
+            &::before {
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                content: "";
+                background-color: white;
+                opacity: 0.75;
+            }
+        }
+
+        background-size: cover;
+        background-position: center top;
+
+        // individual backgrouds and adjustments -- mobile
+        &.deep-earth {
+            background-image: url("/images/mobile/image-deep-earth.jpg");
+        }
+
+        &.night-arcade {
+            background-image: url("/images/mobile/image-night-arcade.jpg");
+        }
+        
+        &.soccer-team {
+            background-image: url("/images/mobile/image-soccer-team.jpg");
+        }
+        
+        &.the-grid {
+            h3 {
+                width: 30%;
+            }
+            background-image: url("/images/mobile/image-grid.jpg");
+        }
+        
+        &.from-above {
+            background-image: url("/images/mobile/image-from-above.jpg");
+        }
+        
+        &.pocket-borealis {
+            background-image: url("/images/mobile/image-pocket-borealis.jpg");
+        }
+        
+        &.the-curiosity {
+            background-image: url("/images/mobile/image-curiosity.jpg");
+        }
+        
+        &.make-it-fisheye {
+            background-image: url("/images/mobile/image-fisheye.jpg");
+        }
+        
+        // individual backgrouds and adjustments -- desktop
+        @include bp.up(large) {
+            &.deep-earth {
+                background-image: url("/images/desktop/image-deep-earth.jpg");
+            }
+
+            &.night-arcade {
+                background-image: url("/images/desktop/image-night-arcade.jpg");
+            }
+            
+            &.soccer-team {
+                background-image: url("/images/desktop/image-soccer-team.jpg");
+            }
+            
+            &.the-grid {
+                padding-right: 0;
+                background-image: url("/images/desktop/image-grid.jpg");
+                
+                h3 {
+                    width: 50%;
+                }
+            }
+            
+            &.from-above {
+                background-image: url("/images/desktop/image-from-above.jpg");
+            }
+            
+            &.pocket-borealis {
+                background-image: url("/images/desktop/image-pocket-borealis.jpg");
+            }
+            
+            &.the-curiosity {
+                background-image: url("/images/desktop/image-curiosity.jpg");
+            }
+            
+            &.make-it-fisheye {
+                background-image: url("/images/desktop/image-fisheye.jpg");
+            }
+        }
+
+    }
+
+}
+

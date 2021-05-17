@@ -1,0 +1,123 @@
+@use "breakpoints" as bp;
+@use "functions" as *;
+
+.footer {
+    padding: toRem(56) toRem(51) toRem(56) toRem(52);
+
+    background-color: black;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    @include bp.up(large) {
+        display: grid;
+        grid-template-areas: 
+            "logo social"
+            "nav copyright";
+
+        padding: toRem(44) toRem(165) toRem(43);    
+    }
+
+
+    &__logo {
+        height: 24px;
+        grid-area: logo;
+    }
+
+    &__nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        margin: toRem(32) 0 toRem(48);
+
+        
+
+        &-link {
+            line-height: toRem(25);
+            &:not(:last-child) {
+                margin-bottom: toRem(16);
+            }
+        }
+
+        @include bp.up(large) {
+            grid-area: nav;
+            flex-direction: row;
+            margin: toRem(25) 0 0;
+
+            &-link {
+                &:not(:last-child) {
+                    margin-bottom: 0;
+                    margin-right: toRem(33);
+                }
+
+                &:hover::before {
+                    position: absolute;
+                    width: toRem(24);
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: toRem(-8);
+                    content: "";
+                    border-bottom: 2px solid white;
+                }
+            }
+        }
+
+    }
+
+    &__social {
+
+        &-link {
+            &:not(:last-child) {
+                margin-right: toRem(12);
+            }
+        }
+
+        &-icon {
+            vertical-align: top;
+            width: 24px;
+
+            &.twitter {
+                position: relative;
+                top: 2px;
+            }
+        }
+
+        @include bp.up(large) {
+            grid-area: social;
+            justify-self: end;
+
+            &-link {
+                &:hover::before {
+                    position: absolute;
+                    width: toRem(24);
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: toRem(-16);
+                    content: "";
+                    border-bottom: 2px solid white;
+                }
+            }
+
+        }
+    }
+
+    &__copyright {
+        margin: toRem(16) 0 0;
+        color: white;
+        opacity: 50%;
+
+
+        @include bp.up(large) {
+            margin: toRem(25) 0 0;
+            grid-area: copyright;
+            justify-self: end;
+        }
+    }
+
+
+}
+
