@@ -166,6 +166,17 @@
             }
         }
 
+        &::before {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            content: "";
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+        }
+
         &:hover {
             color: black;
             
@@ -199,9 +210,11 @@
         }
         
         &.the-grid {
+
             h3 {
                 width: 30%;
             }
+
             background-image: url("/images/mobile/image-grid.jpg");
         }
         
